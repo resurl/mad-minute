@@ -1,0 +1,42 @@
+html,body {
+    height: 100%
+}
+
+body {
+   margin: 0
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#test {
+    margin-top: 0.5em;
+}
+
+.button {
+    background-color: rosybrown;
+    color: white;
+    padding: 1%;
+    font: 15px sans-serif;
+    border-radius: 18px;
+    box-shadow: 2px 2px #403024
+}
+
+.button:hover {
+    background-color: #403024;
+    color: white;
+    padding: 1%;
+    font: 15px sans-serif;
+    border-radius: 18px;
+    translate: 2px 2px;
+    box-shadow: none;
+}
+
+

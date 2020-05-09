@@ -1,0 +1,21 @@
+doctype html
+html 
+    head
+        title Testing...
+        style
+            include css/test.css 
+    body
+        h1 Testing #{num} Times Table
+        div(class='wrapper')
+            div(class='wrapper-control')
+                div(class='buttons')
+                    button(class='timer-button' id='start') Start Quiz!
+                    button(class='timer-button' id='end') Stop Quiz!
+                div(class='wrapper-timer' id='timer') 0:00
+            div(class='wrapper-input')
+                div(class='wrapper-question')
+                    p(id='question') ? x ? =
+                    input(type='text' id='answer')
+                button(id='submit') Enter
+        script(type='module' src='/test.js')
+        

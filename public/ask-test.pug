@@ -1,0 +1,15 @@
+doctype html 
+html
+    head
+        title Times Test
+        style
+            include css/ask-test.css      
+    body
+        div(class='wrapper')
+            h1(style='text-align:center') Which number do you want to test?
+            div(class='nums')
+                - let n = 0
+                while n < 12
+                    a(class=`nums-button` href=`/test/${n+1}`)=++n
+
+                    
