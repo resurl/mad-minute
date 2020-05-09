@@ -39,26 +39,37 @@ submitButton.addEventListener('click', () => {
 })
 
 // sets state of timer to running and begins timer
-// TODO: format time to 00:00
+// TODO: handle end of test
 function startTimer() {
     running = true;
+    quizState.correct = 0;
     quizState.position = 0;
     let beginning = Date.now();
     refreshInterval = setInterval(() => {
         delta = Date.now() - beginning;
-        let time = `${Math.floor(delta/100000)}:${Math.floor(delta/10000) % 6}${Math.floor(delta/1000) % 10}`
+        // or if questions have all been completed
+        if (delta > 100000) {
+            document.getElementById('timer').innerHTML = 'Time\'s up!';
+            clearInterval(refreshInterval);
+            setTimeout(endTimer, 3000);
+            return;
+        }
+        let time = `${Math.floor(delta/100000)}:${Math.floor(delta/10000) % 6}${Math.floor(delta/1000) % 10}`;
         document.getElementById('timer').innerHTML = time;
     }, 100);
     startQuiz();
 }
 
 function endTimer() {
-    clearInterval(refreshInterval);
+    console.log('ending timer');
+    if (refreshInterval)
+        clearInterval(refreshInterval);
     running = false;
+    document.getElementById('timer').innerHTML = '0:00';
+    handleQuizEnd();
     quizState.position = 0;
     quizState.correct = 0;
     delta = 0;
-    document.getElementById('timer').innerHTML = '0:00';
 }
 
 function startQuiz() {
@@ -69,11 +80,15 @@ function startQuiz() {
 }
 
 function parseAnswer(string) {
-    if (string == quizState.bank.answers[quizState.position]) {
+    if (string == quizState.bank.answers[quizState.position])
         quizState.correct++;
-        console.log('correct!')
-    }
     quizState.position++;
     answerBox.value = '';
-    questionText.innerHTML = `${num} x ${quizState.bank.questions[quizState.position]} =`
+    if (quizState.position > numQuestions)
+        endTimer();
+    questionText.innerHTML = `${num} x ${quizState.bank.questions[quizState.position]} =`;
+}
+
+function handleQuizEnd() {
+    console.log(`you answered ${quizState.correct} out of ${numQuestions} questions`)
 }
