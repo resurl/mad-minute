@@ -39,7 +39,6 @@ submitButton.addEventListener('click', () => {
 })
 
 // sets state of timer to running and begins timer
-// TODO: handle end of test
 function startTimer() {
     running = true;
     quizState.correct = 0;
@@ -47,7 +46,6 @@ function startTimer() {
     let beginning = Date.now();
     refreshInterval = setInterval(() => {
         delta = Date.now() - beginning;
-        // or if questions have all been completed
         if (delta > 100000) {
             document.getElementById('timer').innerHTML = 'Time\'s up!';
             clearInterval(refreshInterval);
@@ -66,7 +64,7 @@ function endTimer() {
         clearInterval(refreshInterval);
     running = false;
     document.getElementById('timer').innerHTML = '0:00';
-    questionText.innerHTML = '? x ? = '
+    questionText.innerHTML = '? x ? = ';
     handleQuizEnd();
     quizState.position = 0;
     quizState.correct = 0;
@@ -76,7 +74,10 @@ function endTimer() {
 function startQuiz() {
     if(num > maxFactor)
         maxFactor = num;
+    document.getElementById('results').style.visibility = 'hidden';
     quizState.bank = generate(maxFactor, numQuestions, num);
+    answerBox.value = '';
+    answerBox.focus();
     questionText.innerHTML = `${num} x ${quizState.bank.questions[0]} =`;
 }
 
@@ -91,5 +92,6 @@ function parseAnswer(string) {
 }
 
 function handleQuizEnd() {
-    console.log(`you answered ${quizState.correct} out of ${numQuestions} questions`)
+    document.getElementById('results').innerHTML = `you answered ${quizState.correct} correctly out of ${numQuestions}`
+    document.getElementById('results').style.visibility = 'visible';
 }

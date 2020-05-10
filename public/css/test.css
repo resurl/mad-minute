@@ -15,6 +15,11 @@ h1 {
     font-family: sans-serif;
     font-weight: bold;
 }
+
+a {
+    display:inline-block
+}
+
 #question {
     margin:0;
     padding: 0;
@@ -28,10 +33,17 @@ h1 {
 #submit {
     margin-top: 1.5em;
 }
-#start {
-    margin-right: 0.5em;
+#results {
+    font: 18px sans-serif;
+    visibility: hidden;
+    margin-top: 0.5em;
 }
-
+#timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .wrapper {
     width: 95%;
     display: flex;
@@ -42,16 +54,43 @@ h1 {
 
 .wrapper-control {
     margin: 0;
+    margin-bottom: 0.5em;
     padding: 0;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
-.wrapper-timer {
+.button {
+    margin: 0 0.4em 1em 0.4em;
+    padding: 0.5em;
+    font: 16px sans-serif;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: #403024 1px 2px;
+    cursor: pointer;
+    border: none;
+    background-color: rosybrown;
+    color:white;
+}
+.button:hover {
+    margin: 0 0.4em 1em 0.4em;
+    padding: 0.5em;
+    font: 16px sans-serif;
+    text-decoration: none;
+    border-radius: 10px;
+    border:none;
+    background-color: #403024;
+    color:white;
+    translate: 1px 2px;
+}
+.wrapper-results{
     height: 3em;
     font: bold 24px sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 .wrapper-input {
     margin: 0;

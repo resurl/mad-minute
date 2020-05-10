@@ -8,14 +8,18 @@ html
         h1 Testing #{num} Times Table
         div(class='wrapper')
             div(class='wrapper-control')
-                div(class='buttons')
-                    button(class='timer-button' id='start') Start Quiz!
-                    button(class='timer-button' id='end') Stop Quiz!
-                div(class='wrapper-timer' id='timer') 0:00
+                div(class='control-buttons')
+                    button(class='button' id='start') Start Quiz!
+                    button(class='button' id='end') Stop Quiz!
+                    a(class='button' id='home' href='/') Back to Start
+                    a(class='button' id='back' href='/test') Go Back
+                div(class='wrapper-results')
+                    div(id='timer') 0:00
+                    div(id='results')
             div(class='wrapper-input')
                 div(class='wrapper-question')
                     p(id='question') ? x ? =
                     input(type='text' id='answer')
-                button(id='submit') Enter
+                button(class='button' id='submit') Enter
         script(type='module' src='/scripts/test.js')
         
