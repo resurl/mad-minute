@@ -8,7 +8,7 @@ const questionText = document.getElementById('question');
 let running = false;
 let refreshInterval = 0;
 let delta = 0;
-let numQuestions = 48;
+let numQuestions = 13;
 let maxFactor = 12;
 let quizState = {
     bank: [],
@@ -66,6 +66,7 @@ function endTimer() {
         clearInterval(refreshInterval);
     running = false;
     document.getElementById('timer').innerHTML = '0:00';
+    questionText.innerHTML = '? x ? = '
     handleQuizEnd();
     quizState.position = 0;
     quizState.correct = 0;
@@ -84,9 +85,9 @@ function parseAnswer(string) {
         quizState.correct++;
     quizState.position++;
     answerBox.value = '';
-    if (quizState.position > numQuestions)
-        endTimer();
     questionText.innerHTML = `${num} x ${quizState.bank.questions[quizState.position]} =`;
+    if (quizState.position >= numQuestions)
+        endTimer();
 }
 
 function handleQuizEnd() {
