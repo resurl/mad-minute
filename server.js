@@ -20,8 +20,12 @@ app.get('/test', (req,res) => {
     res.render(__dirname + '/public/ask-test')
 });
 
+app.get('/learn/:num', (req,res) => {
+    res.render(__dirname + '/public/flash', {num: parseInt(req.params.num)})
+})
+
 app.get('/learn', (req,res) => {
-    res.render(__dirname + '/public/flash')
+    res.render(__dirname + '/public/ask-flash')
 });
 
 app.listen(PORT, () => {console.log(`Server started on port ${PORT}`)});

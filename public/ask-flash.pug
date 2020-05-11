@@ -3,14 +3,14 @@ html
     head
         title Times Test
         style
-            include css/ask-test.css      
+            include css/ask-flash.css      
     body
         div(class='wrapper')
-            h1(style='text-align:center') Which number do you want to test?
+            h1(style='text-align:center') Which number do you want to practice?
             div(class='nums')
                 - let n = 0
                 while n < 12
-                    a(class=`nums-button` href=`/test/${n+1}`)=++n
+                    a(class=`nums-button` href=`/learn/${n+1}`)=++n
             div(class='other')
                 div(class='other-text') Other (please type): 
                 input(type='text' id='other-answer')
