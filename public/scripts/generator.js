@@ -66,7 +66,5 @@ export function practice(maxFactor, num) {
         "questions":arr,
         "answers":answers
     };
-    console.log(cards.questions)
-    console.log(cards.answers)
     return cards;
 }
