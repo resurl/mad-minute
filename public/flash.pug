@@ -5,3 +5,13 @@ html
         style
             include css/flash.css
     body
+        h1 Practicing #{num} Times Table
+        div(class='wrapper')
+            div(class='button-group')
+                a(class='button' id='home' href='/') Go to Start
+                a(class='button' id='back' href='/learn') Go Back
+            div(id='flashcard') ? x ? = ?
+            div(class='button-group')
+                button(class='button' id='flip') Show Answer
+                button(class='button' id='next') Next
+        script(type='module' src='/scripts/learn.js')

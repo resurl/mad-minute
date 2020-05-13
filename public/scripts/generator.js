@@ -42,12 +42,31 @@ function generateAnswers(num, arr) {
  * @param {Number} size - how many questions
  * @param {Number} num - the number being multiplied with
  */
-export default function generate(maxFactor, size, num) {
+export function generate(maxFactor, size, num) {
     let questions = generateQuestions(maxFactor, size)
-    let answers = generateAnswers(num,questions);
+    let answers = generateAnswers(num, questions);
     let bank = {
         "questions":questions,
         "answers":answers
     }
     return bank;
+}
+
+//just generates a random array up to maxFactor LOL
+export function practice(maxFactor, num) {
+    let arr = []
+    for (let i = 1; i <= maxFactor; i++) {
+        arr.push(i);
+    }
+    let answers = []
+    for (let i = 0; i < arr.length; i++) {
+        answers.push(arr[i] * num);
+    }
+    let cards = {
+        "questions":arr,
+        "answers":answers
+    };
+    console.log(cards.questions)
+    console.log(cards.answers)
+    return cards;
 }

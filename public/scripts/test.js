@@ -1,4 +1,4 @@
-import generate from "./generator.js"
+import * as Generator from "./generator.js"
 
 const urlPathname = window.location.pathname;
 const num = parseInt(urlPathname.charAt(urlPathname.length-1));
@@ -75,7 +75,7 @@ function startQuiz() {
     if(num > maxFactor)
         maxFactor = num;
     document.getElementById('results').style.visibility = 'hidden';
-    quizState.bank = generate(maxFactor, numQuestions, num);
+    quizState.bank = Generator.generate(maxFactor, numQuestions, num);
     answerBox.value = '';
     answerBox.focus();
     questionText.innerHTML = `${num} x ${quizState.bank.questions[0]} =`;
