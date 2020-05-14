@@ -1,20 +1,21 @@
 import * as Generator from "./generator.js"
 
 const urlPathname = window.location.pathname;
-const num = parseInt(urlPathname.charAt(urlPathname.length-1));
+const num = parseInt(urlPathname.split('/').pop()); // takes last parameter of URL
 const submitButton = document.getElementById('submit');
 const answerBox = document.getElementById('answer');
 const questionText = document.getElementById('question');
 let running = false;
 let refreshInterval = 0;
 let delta = 0;
-let numQuestions = 13;
+let numQuestions = 48;
 let maxFactor = 12;
 let quizState = {
     bank: [],
     position: 0,
     correct: 0
 }
+
 
 // if timer isn't already running, start tracking time
 document.getElementById('start').addEventListener('click', () => {
